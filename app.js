@@ -7,15 +7,17 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter"
 import globalRouter from "./routers/globalRouter"
 import routes from "./route"
-
+import {localsMiddlerWare} from "./middlewares"
 const app = express();
 
+app.use(helmet()); // Security 용
+app.set('view engine', "pug");
 /* MIDDLEWARE START LINE */
 app.use(cookieParser()); // 유저로 부터 받은 cookie 를 이해하는 과정
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true})); // 서버가 유저로 부터 받은 data를 이해하는 과정
-app.use(helmet()); // Security 용
 app.use(morgan("dev")); // Logger Middle Ware
+app.use(localsMiddlerWare);
 /* MIDDLEWARE END LINE */
 
 /*Router START LINE*/
