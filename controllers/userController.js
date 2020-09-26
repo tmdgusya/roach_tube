@@ -1,5 +1,5 @@
 import { fuchsia } from "color-name";
-import { routes } from '../route'
+import routes  from '../route'
 
 export const getJoin = (req, res) => {
     res.render("Join", {pageTitle: "Join"});
