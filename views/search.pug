@@ -5,5 +5,12 @@ block content
     .search__header
         h3 searching for #{searchingFor} 
     .search__videos
+        if videos.length === 0
+            h5 No Videos Found
         each item in videos
-            +videoBlock(item)
+            +videoBlock({
+                title: item.title,
+                views: item.views,
+                videoFile:item.videoFile,
+                id: item.id
+            })
