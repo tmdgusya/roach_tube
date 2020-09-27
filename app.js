@@ -8,10 +8,13 @@ import videoRouter from "./routers/videoRouter"
 import globalRouter from "./routers/globalRouter"
 import routes from "./route"
 import {localsMiddlerWare} from "./middlewares"
+import mongoose from "mongoose"
 const app = express();
 
 app.use(helmet()); // Security 용
+mongoose.set('useFindAndModify', false);
 app.set('view engine', "pug");
+app.use("/uploads", express.static("uploads"));
 /* MIDDLEWARE START LINE */
 app.use(cookieParser()); // 유저로 부터 받은 cookie 를 이해하는 과정
 app.use(bodyParser.json());

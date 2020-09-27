@@ -118,3 +118,9 @@ dist
 # node_module은 보낼필요가 없음
 node_modules
 package-lock.json
+
+# 암호화 파일
+.env
+
+# Databases 파일
+uploads
