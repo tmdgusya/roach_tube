@@ -5,10 +5,10 @@ const multerVideo = multer({ dest: "uploads/videos/" });
 
 // 전역 변수로 만들어주는 것
 export const localsMiddlerWare = (req, res, next) => {
-  res.locals.siteName = "Wetube";
+  res.locals.siteName = "RoachTube";
   res.locals.routes = routes;
   res.locals.user = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     id: 1,
   };
   next();
