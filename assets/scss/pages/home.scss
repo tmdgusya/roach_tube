@@ -1,6 +1,5 @@
-.videoBlock {
-  .videowBlock__thumbnail {
-    width: 600px;
-    align-content: center;
-  }
+.home-videos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  grid-gap: 25px;
 }

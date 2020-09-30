@@ -7,10 +7,7 @@ const multerVideo = multer({ dest: "uploads/videos/" });
 export const localsMiddlerWare = (req, res, next) => {
   res.locals.siteName = "RoachTube";
   res.locals.routes = routes;
-  res.locals.user = {
-    isAuthenticated: false,
-    id: 1,
-  };
+  res.locals.user = req.user || {}; // 인증되지않았을때도 일단 창은떠야되니깐.
   next();
 };
 

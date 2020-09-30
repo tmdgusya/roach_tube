@@ -1,5 +1,9 @@
-a.form-continer__link.form-container__link--delete {
-  & button {
-    align-items: center;
+.edit__container {
+  align-items: center;
+  display: block;
+  & a.form-continer__link.form-container__link--delete {
+    & button {
+      font-weight: 300;
+    }
   }
 }
