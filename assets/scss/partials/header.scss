@@ -12,6 +12,7 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     .header__column {
+      margin-right: 15px;
       i {
         color: white;
         font-size: 40px;

@@ -334,48 +334,50 @@ input[type="submit"] {
        -moz-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-    .header .header__wrapper .header__column i {
-      color: white;
-      font-size: 40px; }
-    .header .header__wrapper .header__column:nth-child(2) {
-      justify-self: center; }
-    .header .header__wrapper .header__column:last-child {
-      justify-self: end; }
-    .header .header__wrapper .header__column ul {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: flex; }
-      .header .header__wrapper .header__column ul li a {
+    .header .header__wrapper .header__column {
+      margin-right: 15px; }
+      .header .header__wrapper .header__column i {
         color: white;
-        font-weight: 600;
-        text-transform: uppercase; }
-      .header .header__wrapper .header__column ul li:not(:last-child) {
-        margin-right: 15px; }
-    .header .header__wrapper .header__column form {
-      width: 100%; }
-      .header .header__wrapper .header__column form input {
-        padding: 7px 10px;
-        width: 700px;
-        -webkit-border-radius: 5px;
-           -moz-border-radius: 5px;
-                border-radius: 5px;
-        font-size: 14px;
-        color: #444444;
-        font-weight: 500; }
-        .header .header__wrapper .header__column form input::-webkit-input-placeholder {
-          color: #444444; }
-        .header .header__wrapper .header__column form input:-moz-placeholder {
-          color: #444444; }
-        .header .header__wrapper .header__column form input::-moz-placeholder {
-          color: #444444; }
-        .header .header__wrapper .header__column form input:-ms-input-placeholder {
-          color: #444444; }
-        .header .header__wrapper .header__column form input::-ms-input-placeholder {
-          color: #444444; }
-        .header .header__wrapper .header__column form input::placeholder {
-          color: #444444; }
+        font-size: 40px; }
+      .header .header__wrapper .header__column:nth-child(2) {
+        justify-self: center; }
+      .header .header__wrapper .header__column:last-child {
+        justify-self: end; }
+      .header .header__wrapper .header__column ul {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex; }
+        .header .header__wrapper .header__column ul li a {
+          color: white;
+          font-weight: 600;
+          text-transform: uppercase; }
+        .header .header__wrapper .header__column ul li:not(:last-child) {
+          margin-right: 15px; }
+      .header .header__wrapper .header__column form {
+        width: 100%; }
+        .header .header__wrapper .header__column form input {
+          padding: 7px 10px;
+          width: 700px;
+          -webkit-border-radius: 5px;
+             -moz-border-radius: 5px;
+                  border-radius: 5px;
+          font-size: 14px;
+          color: #444444;
+          font-weight: 500; }
+          .header .header__wrapper .header__column form input::-webkit-input-placeholder {
+            color: #444444; }
+          .header .header__wrapper .header__column form input:-moz-placeholder {
+            color: #444444; }
+          .header .header__wrapper .header__column form input::-moz-placeholder {
+            color: #444444; }
+          .header .header__wrapper .header__column form input:-ms-input-placeholder {
+            color: #444444; }
+          .header .header__wrapper .header__column form input::-ms-input-placeholder {
+            color: #444444; }
+          .header .header__wrapper .header__column form input::placeholder {
+            color: #444444; }
 
 .footer {
   widows: 100%;
@@ -430,6 +432,8 @@ input[type="submit"] {
     width: 100%;
     max-width: 320px;
     margin-bottom: 50px; }
+    .form-container form:first-child {
+      margin-top: 70px; }
     .form-container form input:not([type="file"]),
     .form-container form .fileUpload {
       display: block;
@@ -466,13 +470,13 @@ button {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.5);
      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.5);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.5); }
+  button span {
+    color: white; }
   button.social-login--github {
-    color: white;
     background-color: #2c9f45;
     font-weight: 400; }
-  button.social-login--facebook {
-    color: white;
-    background-color: #3498db;
+  button.social-login--kakao {
+    background-color: #f7e049;
     font-weight: 400; }
 
 .videoBlock:nth-child(1), .videoBlock:nth-child(2), .videoBlock:nth-child(3) {

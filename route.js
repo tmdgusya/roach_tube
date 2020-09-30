@@ -25,6 +25,10 @@ const DELETE_VIDEO = "/:id/delete";
 const GITHUB = "/auth/github";
 const GITHUB_CALLBACK = "/auth/github/callback";
 
+//KaKao
+const KAKAO = "/kakao";
+const KAKAO_CALLBACK = "/oauth/kakao/callback";
+
 export const routes = {
   home: HOME,
   join: JOIN,
@@ -66,6 +70,8 @@ export const routes = {
   },
   github: GITHUB,
   githubCallBack: GITHUB_CALLBACK,
+  kakao: KAKAO,
+  kakaoCallBack: KAKAO_CALLBACK,
   me: ME,
 };
 

@@ -75,9 +75,17 @@ export const githubLoginCallback = async (
   }
 };
 
-export const postGithubLogin = (req, res) => {
+export const kakaoLogin = passport.authenticate("kakao");
+
+export const kakaoCallback = (accessToken, refreshToken, profile, done) => {
+  return done(null, profile);
+};
+
+export const postSocialLogin = (req, res) => {
   res.redirect(routes.home);
 };
+
+// export const kakaoLoginCallback =
 
 export const logout = (req, res) => {
   //To Do : Process Log out
