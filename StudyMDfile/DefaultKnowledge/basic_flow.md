@@ -54,3 +54,7 @@ const betweenHome = (req, res, next) => { // 지금 between 은 middleware 임 �
 ## 로그인부분은 passportjs 를 헷갈리면 참고하자
 
 - <http://www.passportjs.org/docs/authenticate/>
+
+## Github login call back link
+
+- http://127.0.0.1:4000/auth/github/callback

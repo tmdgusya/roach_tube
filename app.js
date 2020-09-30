@@ -7,18 +7,17 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./route";
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 import passport from "passport";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import mongoose from "mongoose";
 import { localsMiddlerWare } from "./middlewares";
 import "./passport";
 
 const app = express();
 const CookieStore = MongoStore(session);
 
-app.use(helmet()); // Security 용
+app.use(helmet({ contentSecurityPolicy: false })); // Security 용
 mongoose.set("useFindAndModify", false);
 app.set("view engine", "pug");
 app.use("/uploads", express.static("uploads"));

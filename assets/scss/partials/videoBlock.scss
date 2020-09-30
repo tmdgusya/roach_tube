@@ -1,4 +1,9 @@
 .videoBlock {
+  &:nth-child(1),
+  &:nth-child(2),
+  &:nth-child(3) {
+    margin-top: 80px;
+  }
   .videoBlock__thumbnail {
     background-color: black;
     height: 300px;

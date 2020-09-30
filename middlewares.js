@@ -7,8 +7,24 @@ const multerVideo = multer({ dest: "uploads/videos/" });
 export const localsMiddlerWare = (req, res, next) => {
   res.locals.siteName = "RoachTube";
   res.locals.routes = routes;
-  res.locals.user = req.user || null; // 인증되지않았을때도 일단 창은떠야되니깐.
+  res.locals.loggedUser = req.user || null; // 인증되지않았을때도 일단 창은떠야되니깐.
   next();
+};
+
+export const onlyPublic = (req, res, next) => {
+  if (req.user) {
+    res.redirect(routes.home);
+  } else {
+    next();
+  }
+};
+//TO DO : upload user 랑 매칭이되야 들어가게 만들어야됨.
+export const onlyPrivate = (req, res, next) => {
+  if (req.next) {
+    next();
+  } else {
+    res.redirect(routes.home);
+  }
 };
 
 // 한가지파일만 업로드가능

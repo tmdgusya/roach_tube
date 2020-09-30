@@ -320,7 +320,8 @@ input[type="submit"] {
 .header {
   width: 100%;
   background-color: #ea232c;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  position: fixed; }
   .header .header__wrapper {
     padding: 3px 0px;
     width: 100%;
@@ -473,6 +474,9 @@ button {
     color: white;
     background-color: #3498db;
     font-weight: 400; }
+
+.videoBlock:nth-child(1), .videoBlock:nth-child(2), .videoBlock:nth-child(3) {
+  margin-top: 80px; }
 
 .videoBlock .videoBlock__thumbnail {
   background-color: black;

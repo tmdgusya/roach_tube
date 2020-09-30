@@ -39,17 +39,71 @@ export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
 });
 
+export const githubLogin = passport.authenticate("github");
+
+export const githubLoginCallback = async (
+  accessToken,
+  refreshToken,
+  profile,
+  cb
+) => {
+  console.log(profile);
+  const {
+    _json: { id, avatar_url, name, email },
+  } = profile;
+  try {
+    const user = await User.findOne({ email: email });
+    if (user) {
+      user.githubID = id;
+      user.avartarURL = avatar_url;
+      user.save();
+      return cb(null, user);
+    }
+    const newUser = await User.create({
+      email,
+      avartarURL: avatar_url,
+      name,
+      githubID: id,
+    });
+    return cb(null, newUser);
+  } catch (error) {
+    if (email === null) {
+      alert("Github email 이 공개되어 있지않습니다.");
+      window.open("https://github.com/settings/profile");
+    }
+    return cb(error);
+  }
+};
+
+export const postGithubLogin = (req, res) => {
+  res.redirect(routes.home);
+};
+
 export const logout = (req, res) => {
   //To Do : Process Log out
+  req.logout();
   res.redirect(routes.home);
 };
 export const users = (req, res) => res.render("users", { pageTitle: "users" });
 
-export const editProfile = (req, res) =>
-  res.render("editProfile", { pageTitle: "editProfile" });
+export const me = (req, res) => {
+  res.render("userDetail", { pageTitle: "userDetail", user: req.user });
+};
 
-export const userDetail = (req, res) =>
-  res.render("userDetail", { pageTitle: "userDetail" });
+export const userDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const user = await User.findById(id);
+    res.render("userDetail", { pageTitle: "userDetail", user });
+  } catch (error) {
+    res.redirect(routes.home);
+  }
+};
+
+export const editProfile = (req, res) =>
+  res.render("editProfile", { pageTitle: "editProfile", user: req.user });
 
 export const changePassword = (req, res) =>
   res.render("changePassword", { pageTitle: "changePassword" });
