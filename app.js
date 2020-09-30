@@ -7,12 +7,16 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./route";
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 import passport from "passport";
 import session from "express-session";
+import MongoStore from "connect-mongo";
+import mongoose from "mongoose";
 import { localsMiddlerWare } from "./middlewares";
 import "./passport";
+
 const app = express();
+const CookieStore = MongoStore(session);
 
 app.use(helmet()); // Security 용
 mongoose.set("useFindAndModify", false);
@@ -29,6 +33,9 @@ app.use(
     secret: process.env.COOKIE_SECRETE,
     resave: true,
     saveUninitialized: false,
+    store: new CookieStore({
+      mongooseConnection: mongoose.connection,
+    }),
   })
 );
 app.use(passport.initialize()); // passport 는 cookie 밑에 써줘야됨. 그래야 정보수신가능
