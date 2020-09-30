@@ -320,8 +320,7 @@ input[type="submit"] {
 .header {
   width: 100%;
   background-color: #ea232c;
-  margin-bottom: 50px;
-  position: fixed; }
+  margin-bottom: 30px; }
   .header .header__wrapper {
     padding: 3px 0px;
     width: 100%;
@@ -432,12 +431,11 @@ input[type="submit"] {
     width: 100%;
     max-width: 320px;
     margin-bottom: 50px; }
-    .form-container form:first-child {
-      margin-top: 70px; }
     .form-container form input:not([type="file"]),
     .form-container form .fileUpload {
       display: block;
       width: 100%;
+      margin-top: 10px;
       padding-top: 10px;
       padding-bottom: 10px;
       -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -451,6 +449,8 @@ input[type="submit"] {
          -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
               box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       margin-bottom: 25px; }
+    .form-container form input[type="file"] {
+      margin-top: 10px; }
     .form-container form input[type="submit"] {
       background-color: #3498db;
       color: white; }
@@ -478,9 +478,6 @@ button {
   button.social-login--kakao {
     background-color: #f7e049;
     font-weight: 400; }
-
-.videoBlock:nth-child(1), .videoBlock:nth-child(2), .videoBlock:nth-child(3) {
-  margin-top: 80px; }
 
 .videoBlock .videoBlock__thumbnail {
   background-color: black;

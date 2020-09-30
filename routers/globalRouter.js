@@ -31,7 +31,7 @@ globalRouter.get(routes.search, search);
 
 globalRouter.get(routes.logout, onlyPrivate, logout);
 
-globalRouter.get(routes.github, githubLogin);
+globalRouter.get(routes.github, onlyPublic, githubLogin);
 globalRouter.get(
   routes.githubCallBack,
   passport.authenticate("github", {
@@ -40,7 +40,7 @@ globalRouter.get(
   postSocialLogin
 );
 
-globalRouter.get(routes.kakao, kakaoLogin);
+globalRouter.get(routes.kakao, onlyPublic, kakaoLogin);
 globalRouter.get(
   routes.kakaoCallBack,
   passport.authenticate("kakao", {
