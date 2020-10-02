@@ -11,8 +11,13 @@
       width: 100px;
       margin-bottom: 25px;
     }
+    hr {
+      height: 0.5px;
+    }
     .video__author {
+      margin-bottom: 15px;
       a {
+        font-size: 20px;
         color: #3498db;
       }
     }
@@ -24,7 +29,7 @@
     }
     .video__title {
       font-size: 22px;
-      font-weight: 300;
+      font-weight: 600;
     }
     .video__views {
       font-size: 14px;

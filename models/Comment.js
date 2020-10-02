@@ -1,18 +1,22 @@
-import moongoose from 'mongoose'
+import moongoose from "mongoose";
 
 const commentSchema = new moongoose.Schema({
-    text: {
-        type: String,
-        required: "Text is required"
-    },
-    createAt: {
-        type: Date,
-        default: Date.now
-    },
-    Video: {
-        type: moongoose.Schema.Types.ObjectId,
-        ref: "Video"
-    }
+  text: {
+    type: String,
+    required: "Text is required",
+  },
+  createAt: {
+    type: Date,
+    default: Date.now,
+  },
+  Video: {
+    type: moongoose.Schema.Types.ObjectId,
+    ref: "Video",
+  },
+  creator: {
+    type: moongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const model = moongoose.model("Comment", commentSchema);

@@ -3,6 +3,7 @@ import routes from "../route";
 import User from "../models/User";
 import passport from "passport";
 import { RSA_NO_PADDING } from "constants";
+import { isTypeAssertionExpression } from "typescript";
 
 export const getJoin = (req, res) => {
   res.render("Join", { pageTitle: "Join" });
@@ -104,7 +105,7 @@ export const userDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const user = await User.findById(id);
+    const user = await (await User.findById(id)).populate("videos");
     res.render("userDetail", { pageTitle: "userDetail", user });
   } catch (error) {
     res.redirect(routes.home);

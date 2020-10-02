@@ -8,16 +8,20 @@ import {
 } from "./controllers/userController";
 import routes from "./route";
 
+// callbackURL 은 싸이트 도메인에 따라 계속바꿔줘야됨
 const kakaokey = {
   clientID: process.env.KAKAO_REST,
+  // callbackURL: `https://5a92fdf6d9de.ngrok.io${routes.kakaoCallBack}`,
   callbackURL: `http://localhost:4000${routes.kakaoCallBack}`,
 };
 passport.use(User.createStrategy());
+
 passport.use(
   new GitbhubStrategy(
     {
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
+      // callbackURL: `https://5a92fdf6d9de.ngrok.io${routes.githubCallBack}`,
       callbackURL: `http://localhost:4000${routes.githubCallBack}`,
     },
     githubLoginCallback
@@ -52,6 +56,7 @@ passport.use(
         });
         return done(null, newUser);
       } catch (error) {
+        console.log(error);
         if (email === null) {
           alert("카카오 email 이 공개되어 있지않습니다.");
         }

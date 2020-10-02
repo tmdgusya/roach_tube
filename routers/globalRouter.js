@@ -8,12 +8,9 @@ import {
   getJoin,
   logout,
   githubLogin,
-  githubLoginCallback,
-  postGithubLogin,
   me,
   postSocialLogin,
   kakaoLogin,
-  kakaoCallback,
 } from "../controllers/userController";
 import { onlyPublic, onlyPrivate } from "../middlewares";
 import passport from "passport";
