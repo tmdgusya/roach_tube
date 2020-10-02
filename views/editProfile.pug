@@ -2,11 +2,12 @@ extends layouts/main
 
 block content
     .form-container
-            lable(for="avatar") Avartar
-            input(type="file", id="avartar", name="avartar")
-            input(type="text", placeholder="Name", name="name")
-            input(type="email", placeholder="email", name="email")
+        form(action=`/users${routes.editProfile}`, method = "post", enctype = "multipart/from-data")
+            .fileUpload
+                lable(for="avatar") Avartar
+                input(type="file", id="avartar", name="avartar", accept = "image/*")
+            input(type="text", placeholder="Name", name="name", value = loggedUser.name)
+            input(type="email", placeholder="email", name="email", value = loggedUser.email)
             input(type="submit", value="Update Profile")
-
-        a.form-container(href=routes.changePassword) 
-            button Change Password
+            a.form-container(href=routes.changePassword) 
+                button Change Password

@@ -682,7 +682,8 @@ button {
     margin-bottom: 50px; }
     .user-profile .user-profile__header .profile__username {
       font-size: 18px;
-      margin-top: 15px; }
+      margin-top: 15px;
+      margin-left: 15px; }
   .user-profile .user-profile__btns {
     display: -webkit-box;
     display: -webkit-flex;

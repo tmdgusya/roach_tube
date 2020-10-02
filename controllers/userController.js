@@ -2,6 +2,7 @@ import { fuchsia } from "color-name";
 import routes from "../route";
 import User from "../models/User";
 import passport from "passport";
+import { RSA_NO_PADDING } from "constants";
 
 export const getJoin = (req, res) => {
   res.render("Join", { pageTitle: "Join" });
@@ -110,8 +111,46 @@ export const userDetail = async (req, res) => {
   }
 };
 
-export const editProfile = (req, res) =>
+export const getEditProfile = (req, res) =>
   res.render("editProfile", { pageTitle: "editProfile", user: req.user });
 
-export const changePassword = (req, res) =>
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { email, name },
+    file,
+  } = req;
+  try {
+    await User.findByIdAndUpdate(req.user.id, {
+      name,
+      email,
+      avartarURL: file ? file.path : req.user.avartarURL,
+    });
+    res.redirect(routes.me);
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.editProfile);
+  }
+};
+
+export const getChangePassword = (req, res) =>
   res.render("changePassword", { pageTitle: "changePassword" });
+
+export const postChangePassword = async (req, res) => {
+  const {
+    body: { oldPassword, newPassword, newPassword1 },
+  } = req;
+  try {
+    if (newPassword !== newPassword1) {
+      //TO DO : 비밀번호 다를 시 redirect 가 아니라 버튼 비활성화가 맞는거같음
+      res.status(400);
+      res.redirect(`/users/${routes.changePassword}`);
+      return;
+    } else {
+      await req.user.changePassword(oldPassword, newPassword);
+      res.redirect(routes.me);
+    }
+  } catch (error) {
+    res.status(400);
+    res.redirect(`/users/${routes.changePassword}`);
+  }
+};
