@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
+import apiRouter from "./routers/apiRouter";
 import routes from "./route";
 import mongoose from "mongoose";
 import passport from "passport";
@@ -46,6 +47,6 @@ app.use(localsMiddlerWare);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
-//Router END LINE
+app.use(routes.api, apiRouter);
 
 export default app; // 누군가 내 파일을 불러올때 app object 를 사용가능하게 하는것

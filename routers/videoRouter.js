@@ -7,6 +7,7 @@ import {
   getUpload,
   deleteVideo,
   videoDetail,
+  postRegisterView,
 } from "../controllers/videoController";
 import { uploadVideo, onlyPrivate } from "../middlewares";
 
