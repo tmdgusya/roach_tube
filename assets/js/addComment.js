@@ -1,5 +1,6 @@
 import axios from "axios";
-
+import { request, response } from "express";
+import routes from "../../route";
 const addCommentForm = document.getElementById("jsAddComment");
 
 const sendComment = async (comment) => {
@@ -9,16 +10,16 @@ const sendComment = async (comment) => {
     method: "POST",
     data: {
       comment: comment,
+      user: request.user,
     },
   });
-  console.log(response);
 };
 
-const handlesubmit = (event) => {
+const handlesubmit = async (event) => {
   event.preventDefault(); // 새로고침 방지
   const commentInput = addCommentForm.querySelector("input");
   const comment = commentInput.value;
-  sendComment(comment);
+  await sendComment(comment);
   commentInput.value = "";
 };
 

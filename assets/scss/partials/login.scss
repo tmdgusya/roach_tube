@@ -1,0 +1,19 @@
+.form-login {
+  form {
+    input {
+      padding: 7px 10px;
+      display: block;
+      width: 400px;
+      margin-bottom: 30px;
+      border: none;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.3),
+        0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    .login {
+      background-color: $button;
+      color: white;
+    }
+  }
+}

@@ -17,7 +17,6 @@ block content
                 span.video__views 1 view
             else
                 span.video__views #{video.views} views
-            hr
         .video__comments
             if video.comments.lengt === 1
                 span.video__comment-number 1 comment
@@ -25,10 +24,10 @@ block content
                 span.video__comment-number #{video.comments.length} comments
             form.add_comment#jsAddComment
                 input(type="text", placeholder="Add a comment", name = "comment")
-            ul.video__comments-list
-                each comment in video.comments
+            ul.video__comments-list#jsCommentList
+                each comment in video.comments.reverse()
                     li
                         img.c-avartar(src=comment.author__profile)
-                        span.comment__creator=comment.author
+                        a.comment__creator(href=routes.userDetail(comment.creator))=comment.author
                         span.comment__text=comment.text
         

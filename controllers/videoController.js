@@ -1,10 +1,11 @@
 import routes from "../route";
 import Video from "../models/Video";
 import Comment from "../models/Comment";
+import User from "../models/User";
 
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({}).sort({ _id: -1 }).populate("creator");
+    const videos = await Video.find({}).sort({ _id: -1 });
     res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
     res.render("home", { pageTitle: "Home", videos: [] });
@@ -19,16 +20,18 @@ export const postUpload = async (req, res) => {
   const {
     body: { title, description },
     file: { path },
+    user,
   } = req;
 
   const newVideo = await Video.create({
     fileUrl: path,
     title,
     description,
-    creator: req.user.id,
+    creator: user.id,
+    author: user.name,
   });
-  req.user.videos.push(newVideo.id);
-  req.user.save();
+  user.videos.push(newVideo.id);
+  user.save();
   res.redirect(routes.videoDetail(newVideo.id));
 };
 
@@ -42,7 +45,6 @@ export const videoDetail = async (req, res) => {
       .populate("comments");
     video.views += 1;
     video.save();
-    console.log(video);
     res.render("videoDetail", { pageTitle: video.title, video });
   } catch (CastError) {
     console.log("해당 비디오 파일은 존재하지 않습니다.");
@@ -85,7 +87,6 @@ export const postEditVideo = async (req, res) => {
     body: { title, description },
   } = req;
   try {
-    console.log(title, description);
     await Video.findOneAndUpdate({ _id: id }, { title, description });
     res.redirect(routes.videoDetail(id));
   } catch (error) {
@@ -96,9 +97,15 @@ export const postEditVideo = async (req, res) => {
 export const deleteVideo = async (req, res) => {
   const {
     params: { id },
+    user,
   } = req;
+  console.log(req);
   try {
     await Video.findOneAndRemove({ _id: id });
+    const idx = user.videos.findIndex((element) => element == id);
+    console.log(idx);
+    user.videos.splice(idx, 1);
+    user.save();
     res.redirect(routes.home);
   } catch (error) {
     res.redirect(routes.home);
@@ -117,8 +124,8 @@ export const postAddComment = async (req, res) => {
     const video = await Video.findById(id);
     const newComment = await Comment.create({
       text: comment,
-      creator: req.user,
-      author: req.user.name,
+      creator: user,
+      author: user.name,
       author__profile: req.user.avartarURL,
     });
     video.comments.push(newComment._id);

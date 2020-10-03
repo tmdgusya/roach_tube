@@ -9,6 +9,13 @@ const OUTPUT_DIR = path.join(__dirname, "static");
 const config = {
   entry: ["@babel/polyfill", ENTRY_FILE],
   mode: MODE,
+  node: {
+    child_process: "empty",
+    fs: "empty",
+    crypto: "empty",
+    net: "empty",
+    tls: "empty",
+  },
   module: {
     // module을 만날때마다 수행하는 rules
     rules: [
