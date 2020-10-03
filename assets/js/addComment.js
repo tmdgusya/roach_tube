@@ -1,5 +1,4 @@
 import axios from "axios";
-import { data } from "autoprefixer";
 
 const addCommentForm = document.getElementById("jsAddComment");
 

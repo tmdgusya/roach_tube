@@ -1,6 +1,8 @@
 import moongoose from "mongoose";
 
 const commentSchema = new moongoose.Schema({
+  author: String,
+  author__profile: String,
   text: {
     type: String,
     required: "Text is required",

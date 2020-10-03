@@ -4,7 +4,7 @@ import Comment from "../models/Comment";
 
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({}).sort({ _id: -1 });
+    const videos = await Video.find({}).sort({ _id: -1 }).populate("creator");
     res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
     res.render("home", { pageTitle: "Home", videos: [] });
@@ -117,7 +117,9 @@ export const postAddComment = async (req, res) => {
     const video = await Video.findById(id);
     const newComment = await Comment.create({
       text: comment,
-      creator: user.id,
+      creator: req.user,
+      author: req.user.name,
+      author__profile: req.user.avartarURL,
     });
     video.comments.push(newComment._id);
     video.save();

@@ -2,7 +2,7 @@ extends layouts/main
 
 block content
     .video-detail__container
-        .videoPlayer
+        .video
             video(src=`/${video.fileUrl}` , controls=true)
         .video__info
             if loggedUser
@@ -12,9 +12,7 @@ block content
             h5.video__title=video.title
             .video__author
                 a(href=routes.userDetail(video.creator.id))=video.creator.name
-            hr
             p.video__description=video.description
-            hr
             if video.views === 1
                 span.video__views 1 view
             else
@@ -30,6 +28,7 @@ block content
             ul.video__comments-list
                 each comment in video.comments
                     li
-                        span.comment__creator=comment.creator
+                        img.c-avartar(src=comment.author__profile)
+                        span.comment__creator=comment.author
                         span.comment__text=comment.text
         
