@@ -1,6 +1,4 @@
 import axios from "axios";
-import { request, response } from "express";
-import routes from "../../route";
 const addCommentForm = document.getElementById("jsAddComment");
 
 const sendComment = async (comment) => {
@@ -10,7 +8,6 @@ const sendComment = async (comment) => {
     method: "POST",
     data: {
       comment: comment,
-      user: request.user,
     },
   });
 };
