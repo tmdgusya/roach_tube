@@ -2,6 +2,12 @@
 
 ## MayBe End Date : 2020-10-04
 
+## Project Rule
+
+- Bug 는 이슈코드로 생성하여 처리한다. Issue 코드는 1씩 올려사용하면 된다.
+
+- 해당 이슈에 대한 수정은 commit message 간 해당 이슈에 대한 코드명으로 커밋한다.
+
 ## IF Project End
 
 - Cord Refactoring -> Login, validation 부분 따로 directory만들어서 사용
