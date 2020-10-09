@@ -7,6 +7,7 @@ import "./models/Comment";
 import "./models/User";
 
 const PORT = process.env.PORT;
+const HOSTNAME = "127.0.0.1";
 const handleListening = () =>
   console.log(`Listening on : http://localhost:${PORT}`);
-app.listen(PORT, handleListening);
+app.listen(PORT, HOSTNAME, handleListening);

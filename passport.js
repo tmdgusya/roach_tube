@@ -12,7 +12,7 @@ import routes from "./route";
 const kakaokey = {
   clientID: process.env.KAKAO_REST,
   // callbackURL: `https://5a92fdf6d9de.ngrok.io${routes.kakaoCallBack}`,
-  callbackURL: `http://localhost:4000${routes.kakaoCallBack}`,
+  callbackURL: `http://roach.dothome.co.kr${routes.kakaoCallBack}`,
 };
 passport.use(User.createStrategy());
 
@@ -22,7 +22,7 @@ passport.use(
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
       // callbackURL: `https://5a92fdf6d9de.ngrok.io${routes.githubCallBack}`,
-      callbackURL: `http://localhost:4000${routes.githubCallBack}`,
+      callbackURL: `http://roach.dothome.co.kr${routes.githubCallBack}`,
     },
     githubLoginCallback
   )
