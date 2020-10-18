@@ -1,5 +1,5 @@
 import moongoose from "mongoose";
-
+import { date } from "./Date";
 const commentSchema = new moongoose.Schema({
   author: String,
   author__profile: String,
@@ -8,8 +8,8 @@ const commentSchema = new moongoose.Schema({
     required: "Text is required",
   },
   createAt: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: date(),
   },
   Video: {
     type: moongoose.Schema.Types.ObjectId,

@@ -25,10 +25,13 @@ block content
                 span.video__comment-number #{video.comments.length} comments
             form.add_comment#jsAddComment
                 input(type="text", placeholder="Add a comment", name = "comment")
+                a(href=`/api${routes.add_comment}`)
+                    button 댓글 작성
             ul.video__comments-list#jsCommentList
                 each comment in video.comments.reverse()
                     li
                         img.c-avartar(src=comment.author__profile)
                         a.comment__creator(href=routes.userDetail(comment.creator))=comment.author
                         span.comment__text=comment.text
+                        span.created_at=comment.createAt
         
