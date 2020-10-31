@@ -1,9 +1,6 @@
-import { fuchsia } from "color-name";
 import routes from "../route";
 import User from "../models/User";
 import passport from "passport";
-import { RSA_NO_PADDING } from "constants";
-import { isTypeAssertionExpression } from "typescript";
 
 export const getJoin = (req, res) => {
   res.render("Join", { pageTitle: "Join" });
