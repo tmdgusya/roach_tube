@@ -1,8 +1,10 @@
 import axios from "axios";
+
 const addCommentForm = document.getElementById("jsAddComment");
 
 const sendComment = async (comment) => {
   const videoId = window.location.href.split("/videos/")[1];
+  console.log(videoId);
   const response = await axios({
     url: `/api/${videoId}/comment`,
     method: "POST",
@@ -10,6 +12,7 @@ const sendComment = async (comment) => {
       comment: comment,
     },
   });
+  console.log(response);
 };
 
 const handlesubmit = async (event) => {
